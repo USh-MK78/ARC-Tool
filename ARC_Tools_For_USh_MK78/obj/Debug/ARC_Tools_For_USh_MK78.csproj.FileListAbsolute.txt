@@ -1,0 +1,10 @@
+C:\Users\User\source\repos\ARC_Tools_For_USh_MK78\ARC_Tools_For_USh_MK78\bin\Debug\ARC_Tools_For_USh_MK78.exe.config
+C:\Users\User\source\repos\ARC_Tools_For_USh_MK78\ARC_Tools_For_USh_MK78\bin\Debug\ARC_Tools_For_USh_MK78.exe
+C:\Users\User\source\repos\ARC_Tools_For_USh_MK78\ARC_Tools_For_USh_MK78\bin\Debug\ARC_Tools_For_USh_MK78.pdb
+C:\Users\User\source\repos\ARC_Tools_For_USh_MK78\ARC_Tools_For_USh_MK78\obj\Debug\ARC_Tools_For_USh_MK78.csprojAssemblyReference.cache
+C:\Users\User\source\repos\ARC_Tools_For_USh_MK78\ARC_Tools_For_USh_MK78\obj\Debug\ARC_Tools_For_USh_MK78.Form1.resources
+C:\Users\User\source\repos\ARC_Tools_For_USh_MK78\ARC_Tools_For_USh_MK78\obj\Debug\ARC_Tools_For_USh_MK78.Properties.Resources.resources
+C:\Users\User\source\repos\ARC_Tools_For_USh_MK78\ARC_Tools_For_USh_MK78\obj\Debug\ARC_Tools_For_USh_MK78.csproj.GenerateResource.cache
+C:\Users\User\source\repos\ARC_Tools_For_USh_MK78\ARC_Tools_For_USh_MK78\obj\Debug\ARC_Tools_For_USh_MK78.csproj.CoreCompileInputs.cache
+C:\Users\User\source\repos\ARC_Tools_For_USh_MK78\ARC_Tools_For_USh_MK78\obj\Debug\ARC_Tools_For_USh_MK78.exe
+C:\Users\User\source\repos\ARC_Tools_For_USh_MK78\ARC_Tools_For_USh_MK78\obj\Debug\ARC_Tools_For_USh_MK78.pdb
