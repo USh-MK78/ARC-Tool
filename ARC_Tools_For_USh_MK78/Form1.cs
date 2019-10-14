@@ -27,6 +27,23 @@ namespace ARC_Tools_For_USh_MK78
             public char[] Header;
         }
 
+        private void arcPack_Exited(object sender, EventArgs e)
+        {
+
+        }
+        private void arc_yaz0_Pack_Exited(object sender, EventArgs e)
+        {
+
+        }
+        private void arcExt_Exited(object sender, EventArgs e)
+        {
+
+        }
+        private void arc_yaz0_Ext_Exited(object sender, EventArgs e)
+        {
+
+        }
+
         private void Form1_Load(object sender, EventArgs e)
         {
             string CD = System.IO.Directory.GetCurrentDirectory();
@@ -107,11 +124,18 @@ namespace ARC_Tools_For_USh_MK78
                 System.IO.File.Copy(Open_ARC.FileName, PathDir + "\\" + FileName + "\\" + FileName2, true);
 
                 //arcファイルを解凍
-                var arcExt = new ProcessStartInfo();
-                arcExt.FileName = CDir + "\\tools\\arcExtract.exe";
-                arcExt.Arguments = "\"" + PathDir + "\\" + FileName + "\\" + FileName2 + "\"";
-                arcExt.UseShellExecute = true;
-                Process.Start(arcExt);
+
+                //プロセス(arc)
+                System.Diagnostics.Process arcExt = new System.Diagnostics.Process();
+                arcExt.StartInfo.FileName = CDir + "\\tools\\arcExtract.exe";
+                arcExt.StartInfo.Arguments = "\"" + PathDir + "\\" + FileName + "\\" + FileName2 + "\"";
+                arcExt.StartInfo.UseShellExecute = true;
+                //イベントハンドラがフォームを作成したスレッドで実行されるようにする
+                arcExt.SynchronizingObject = this;
+                arcExt.Exited += new EventHandler(arcExt_Exited);
+                //プロセス終了時にイベントを発生させる
+                arcExt.EnableRaisingEvents = true;
+                arcExt.Start();
 
                 //ファイルの出力が完了するまでTask.Delayで待つ
                 await Task.Delay(2000);
@@ -130,20 +154,26 @@ namespace ARC_Tools_For_USh_MK78
                 //ファイルをコピー
                 System.IO.File.Copy(Open_ARC.FileName, PathDir + "\\" + FileName + "\\" + FileName2, true);
 
-                var arc_yaz0 = new ProcessStartInfo();
-                arc_yaz0.FileName = CDir + "\\tools\\yaz0dec.exe";
-                arc_yaz0.Arguments = "\"" + PathDir + "\\" + FileName + "\\" + FileName2 + "\"";
-                arc_yaz0.UseShellExecute = true;
-                Process.Start(arc_yaz0);
+                System.Diagnostics.Process arc_yaz0_Ext = new System.Diagnostics.Process();
+                arc_yaz0_Ext.StartInfo.FileName = CDir + "\\tools\\yaz0dec.exe";
+                arc_yaz0_Ext.StartInfo.Arguments = "\"" + PathDir + "\\" + FileName + "\\" + FileName2 + "\"";
+                arc_yaz0_Ext.StartInfo.UseShellExecute = true;
+                arc_yaz0_Ext.SynchronizingObject = this;
+                arc_yaz0_Ext.Exited += new EventHandler(arc_yaz0_Ext_Exited);
+                arc_yaz0_Ext.EnableRaisingEvents = true;
+                arc_yaz0_Ext.Start();
 
                 //Yaz0の解凍が完了するまでTask.Delayで待つ
                 await Task.Delay(2000);
 
-                var arcExt = new ProcessStartInfo();
-                arcExt.FileName = CDir + "\\tools\\arcExtract.exe";
-                arcExt.Arguments = "\"" + PathDir + "\\" + FileName + "\\" + FileName2 + " 0.rarc" + "\"";
-                arcExt.UseShellExecute = true;
-                Process.Start(arcExt);
+                System.Diagnostics.Process arcExt = new System.Diagnostics.Process();
+                arcExt.StartInfo.FileName = CDir + "\\tools\\arcExtract.exe";
+                arcExt.StartInfo.Arguments = "\"" + PathDir + "\\" + FileName + "\\" + FileName2 + "\"";
+                arcExt.StartInfo.UseShellExecute = true;
+                arcExt.SynchronizingObject = this;
+                arcExt.Exited += new EventHandler(arcExt_Exited);
+                arcExt.EnableRaisingEvents = true;
+                arcExt.Start();
 
                 //ファイルの出力が完了するまでTask.Delayで待つ
                 await Task.Delay(2000);
@@ -171,11 +201,15 @@ namespace ARC_Tools_For_USh_MK78
 
             string CDir = System.IO.Directory.GetCurrentDirectory();
 
-            var arcPack = new ProcessStartInfo();
-            arcPack.FileName = CDir + "\\tools\\arcPack.exe";
-            arcPack.Arguments = "\"" + ARCPackDirPath + "\"";
-            arcPack.UseShellExecute = true;
-            Process.Start(arcPack);
+            //プロセス(arc)
+            System.Diagnostics.Process arcPack = new System.Diagnostics.Process();
+            arcPack.StartInfo.FileName = CDir + "\\tools\\arcPack.exe";
+            arcPack.StartInfo.Arguments = "\"" + ARCPackDirPath + "\"";
+            arcPack.StartInfo.UseShellExecute = true;
+            arcPack.SynchronizingObject = this;
+            arcPack.Exited += new EventHandler(arcPack_Exited);
+            arcPack.EnableRaisingEvents = true;
+            arcPack.Start();
 
             //ファイルが作成されるまでTask.Delayで待つ
             await Task.Delay(2000);
@@ -183,11 +217,14 @@ namespace ARC_Tools_For_USh_MK78
             if (checkBox1.Checked)
             {
                 //プロセス(yaz0)
-                var arc_yaz0 = new ProcessStartInfo();
-                arc_yaz0.FileName = CDir + "\\tools\\yaz0enc.exe";
-                arc_yaz0.Arguments = "\"" + ARCPackDirPath + ".arc" + "\"";
-                arc_yaz0.UseShellExecute = true;
-                Process.Start(arc_yaz0);
+                System.Diagnostics.Process arc_yaz0_Pack = new System.Diagnostics.Process();
+                arc_yaz0_Pack.StartInfo.FileName = CDir + "\\tools\\yaz0enc.exe";
+                arc_yaz0_Pack.StartInfo.Arguments = "\"" + ARCPackDirPath + ".arc" + "\"";
+                arc_yaz0_Pack.StartInfo.UseShellExecute = true;
+                arc_yaz0_Pack.SynchronizingObject = this;
+                arc_yaz0_Pack.Exited += new EventHandler(arc_yaz0_Pack_Exited);
+                arc_yaz0_Pack.EnableRaisingEvents = true;
+                arc_yaz0_Pack.Start();
 
                 //ファイルが作成されるまでTask.Delayで待つ
                 await Task.Delay(2000);
